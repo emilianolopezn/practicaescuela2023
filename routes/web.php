@@ -21,3 +21,15 @@ Route::get('/', function () {
 //Index - Listar
 Route::get('/alumnos',[AlumnosController::class,'index'])
     ->name('alumnos.index');
+
+
+//Create - Formulario de creación
+Route::get('/alumnos/create', [AlumnosController::class, 'create'])->name('alumnos.create');
+//Store - almacenar un nuevo registro
+Route::post('/alumnos', [AlumnosController::class, 'store'])->name('alumnos.store');
+//Edit - Formulario de edición 
+//  localhost:8000/alumnos/5/edit
+Route::get('/alumnos/{id}/edit',[AlumnosController::class, 'edit'])
+    ->name('alumnos.edit');
+Route::put('/alumnos/{id}',[AlumnosController::class,'update'])
+    ->name('alumnos.update');

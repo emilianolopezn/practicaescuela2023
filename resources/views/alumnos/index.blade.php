@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de alumnos</title>
+    <title>Document</title>
 </head>
 <body>
     <h1>Lista de alumnos</h1>
-    <table>
+    <a href="{{route('alumnos.create')}}">Crear alumno</a>
+    <table> 
         <thead>
             <tr>
-                <th>Nombre</th>
+                <th> Nombre</th>
                 <th>Acciones</th>
             </tr>
-        </thead>
-        <tbody>
-            @foreach($alumnos as $alumno)
+            <tbody>
+                @foreach($alumnos as $alumno)
                 <tr>
                     <td>{{$alumno->nombre}}</td>
-                    <td><button>Editar</button><button>Eliminar</button></td>
+                    <td>
+                        <a href="{{route('alumnos.edit',$alumno->id)}}">Editar</a>
+                        <button>Eliminar</button>
+                    </td>
                 </tr>
-            @endforeach
-        </tbody>
+                @endforeach
+            </tbody>
+            
+        </thead>
     </table>
+    
 </body>
 </html>
