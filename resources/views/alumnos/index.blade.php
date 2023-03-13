@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Lista de alumnos</h1>
-    @if(Session::has('exito'))
+@extends('base')
+@section('titulo','Alumnos')
+@section('contenido')
+<div class="row">
+    <div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Lista de alumnos</h5>
+        @if(Session::has('exito'))
         <p>{{Session::get('exito')}}</p>
-    @endif
-    <a href="{{route('alumnos.create')}}">Crear alumno</a>
-    <table> 
+        @endif
+        <div class="text-right">
+        <a class="btn btn-sm btn-primary" href="{{route('alumnos.create')}}">Crear alumno</a>
+        </div>
+    
+    <table class="table table-hover"> 
         <thead>
             <tr>
                 <th> Nombre</th>
@@ -23,8 +24,8 @@
                 <tr>
                     <td>{{$alumno->nombre}}</td>
                     <td>
-                        <a href="{{route('alumnos.edit',$alumno->id)}}">Editar</a>
-                        <a href="{{route('alumnos.delete',$alumno->id)}}">Eliminar</a>
+                        <a class="btn btn-primary btn-sm" href="{{route('alumnos.edit',$alumno->id)}}"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{{route('alumnos.delete',$alumno->id)}}"><i class="fa fa-times"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -32,6 +33,15 @@
             
         </thead>
     </table>
+        
+
+
+        </div>
+    </div>
+
+ 
+    </div>
+
+</div>
     
-</body>
-</html>
+@endsection

@@ -70,5 +70,9 @@ class AlumnosController extends Controller
             ->with('exito',$feedback);
     }
 
+    public function prueba() {
+        return view('prueba');
+    }
+
     
 }

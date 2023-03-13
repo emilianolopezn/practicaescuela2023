@@ -38,3 +38,6 @@ Route::get('/alumnos/{id}/delete',[AlumnosController::class,'delete'])
     ->name('alumnos.delete');
 Route::delete('alumnos/{id}',[AlumnosController::class,'destroy'])
     ->name('alumnos.destroy');
+
+
+Route::get('/prueba', [AlumnosController::class,'prueba']);
