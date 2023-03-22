@@ -11,7 +11,7 @@
 <body>
     <h1> Crear alumno </h1>
     <a href="{{route('alumnos.index')}}">Volver a la lista de alumnos</a>
-    <form action="{{route('alumnos.store')}}" method="POST">
+    <form action="{{route('alumnos.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label>Nombre: </label>
@@ -25,6 +25,10 @@
                     <option value="{{$carrera->id}}">{{$carrera->nombre}}</option>
                 @endforeach
             </select>
+        </div>
+        <div>
+            <label >Foto de perfil:</label>
+            <input type="file" name="foto">
         </div>
         <div>
             <button type="submit">Crear alumno</button>

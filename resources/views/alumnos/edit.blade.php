@@ -12,7 +12,7 @@
         <p>{{Session::get('exito')}}</p>
     @endif
     <a href="{{route('alumnos.index')}}">Volver a la lista de alumnos</a>
-    <form action="{{route('alumnos.update',$alumno->id)}}" method="POST">
+    <form action="{{route('alumnos.update',$alumno->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div>
@@ -26,6 +26,15 @@
                     <option @if($alumno->id_carrera == $carrera->id) selected @endif value="{{$carrera->id}}">{{$carrera->nombre}}</option>
                 @endforeach
             </select>
+        </div>
+        <div>
+            <label >Foto de perfil:</label>
+            <input type="file" name="foto">
+        </div>
+        <div>
+            @if($alumno->foto)
+                <img src="/storage/fotos/{{$alumno->foto}}" alt="">
+            @endif
         </div>
         <div>
             <button type="submit">Actualizar alumno</button>

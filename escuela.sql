@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 08-03-2023 a las 21:14:48
+-- Tiempo de generación: 22-03-2023 a las 21:10:49
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -31,6 +31,7 @@ CREATE TABLE `alumnos` (
   `id` int(11) NOT NULL,
   `id_carrera` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -39,9 +40,13 @@ CREATE TABLE `alumnos` (
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`id`, `id_carrera`, `nombre`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Juan', '2023-03-08 21:09:21', '2023-03-09 03:11:17'),
-(4, 1, 'Ana', '2023-03-08 21:09:25', '2023-03-09 03:55:21');
+INSERT INTO `alumnos` (`id`, `id_carrera`, `nombre`, `foto`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Juan', 'JQYHeL0vHpY60Svgzm7q3t0itLThGod4h27AE7CD.jpg', '2023-03-22 21:10:13', '2023-03-23 04:10:13'),
+(4, 1, 'Ana', 'VybDiivoSvk8y2MNPIYnUz0YFk6gn4fJdITNyfvH.jpg', '2023-03-22 21:10:20', '2023-03-23 04:10:20'),
+(5, 2, 'Emiliano López', NULL, '2023-03-22 20:31:43', '2023-03-23 03:31:43'),
+(7, 1, 'Alumno con foto', NULL, '2023-03-23 03:58:57', '2023-03-23 03:58:57'),
+(8, 2, 'Ejemplo foto', NULL, '2023-03-23 04:02:10', '2023-03-23 04:02:10'),
+(9, 2, 'Nuevo con foto', NULL, '2023-03-23 04:04:46', '2023-03-23 04:04:46');
 
 -- --------------------------------------------------------
 
@@ -91,7 +96,7 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `carreras`

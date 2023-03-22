@@ -28,6 +28,12 @@ class AlumnosController extends Controller
         $nuevoAlumno = new Alumno();
         $nuevoAlumno->nombre = $request->input('nombre');
         $nuevoAlumno->id_carrera = $request->input('carrera');
+        $foto = $request->file('foto');
+        if ($foto) {
+            $nuevoAlumno->foto = $foto->hashName();
+            $foto->store('public/fotos');
+            
+        }
         $nuevoAlumno->save();
         return redirect()->route('alumnos.index')
             ->with('exito','Alumno creado exitosamente');
@@ -50,6 +56,12 @@ class AlumnosController extends Controller
         //Actualiza sus datos en base a los valores del form
         $alumno->nombre = $request->input('nombre');
         $alumno->id_carrera = $request->input('carrera');
+        $foto = $request->file('foto');
+        if ($foto) {
+            $alumno->foto = $foto->hashName();
+            $foto->store('public/fotos');
+            
+        }
         $alumno->save();
         return redirect()->route('alumnos.edit',$id)
             ->with('exito','El alumno se ha actualizado exitosamente');
