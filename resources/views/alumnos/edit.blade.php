@@ -20,6 +20,14 @@
             <input type="text" name="nombre" value="{{$alumno->nombre}}">
         </div>
         <div>
+            <select name="carrera">
+                <option value="" disabled>Selecciona una carrera</option>
+                @foreach($carreras as $carrera)
+                    <option @if($alumno->id_carrera == $carrera->id) selected @endif value="{{$carrera->id}}">{{$carrera->nombre}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
             <button type="submit">Actualizar alumno</button>
         </div>
     </form>

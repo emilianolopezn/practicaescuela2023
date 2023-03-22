@@ -27,7 +27,7 @@ class AlumnosController extends Controller
     public function store(Request $request) {
         $nuevoAlumno = new Alumno();
         $nuevoAlumno->nombre = $request->input('nombre');
-        
+        $nuevoAlumno->id_carrera = $request->input('carrera');
         $nuevoAlumno->save();
         return redirect()->route('alumnos.index')
             ->with('exito','Alumno creado exitosamente');
@@ -37,8 +37,10 @@ class AlumnosController extends Controller
     //parámetros de función
     public function edit($id) {
         $alumno = Alumno::find($id);
+        $carreras = Carrera::all();
         $argumentos = array();
         $argumentos['alumno'] = $alumno;
+        $argumentos['carreras'] = $carreras;
         return view('alumnos.edit',$argumentos);
     }
 
@@ -47,7 +49,7 @@ class AlumnosController extends Controller
         $alumno = Alumno::find($id);
         //Actualiza sus datos en base a los valores del form
         $alumno->nombre = $request->input('nombre');
-        
+        $alumno->id_carrera = $request->input('carrera');
         $alumno->save();
         return redirect()->route('alumnos.edit',$id)
             ->with('exito','El alumno se ha actualizado exitosamente');
